@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .amit{ width: 320px; background: #3e3d3d; padding: 40px 20px; box-sizing: border-box; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+        h1{text-align: center; color: #fff; font-weight: normal; margin-bottom: 20px;}
+        
+        input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 15px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; color: #fff;}
+        button{ background: #bac675; border: 0;  cursor: pointer; color: #3e3d3d;}
+        span{color: red;}
+        
+    </style>
+</head>
+<body>
+
+    <div class="amit">
+    <h1>Form</h1>
+    <input type="text" id="name" placeholder="Name">
+    <span id="name1"></span>
+    <input type="email" id="mail" placeholder="email">
+    <span id="name2"></span>
+    <span id="name21"></span>
+    <span id="name22"></span>
+    <span id="name23"></span>
+    <input type="text" id="pass" placeholder="password">
+    <span id="name3"></span>
+    <span id="name31"></span>
+    <span id="name32"></span>
+    <span id="name33"></span>
+    <span id="name33"></span>
+    <input type="text" id="conpass" placeholder="confirm password">
+    <span id="name4"></span>
+    <span id="name5"></span>
+    <button onclick="prc()">Submit</button>
+
+</div>
+
+
+    <script>
+        function prc(){
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("mail").value;
+            var pass=document.getElementById("pass").value;
+            var conpass=document.getElementById("conpass").value;
+            // Name
+            if(name=="" || name==" "){
+                document.getElementById("name1").innerHTML="Plz Enter Name, ";
+            }
+            else{
+                if(!isNaN(name)){
+                document.getElementById("name1").innerHTML="Plz Enter Name, ";
+             }
+            }
+
+            //pass
+            if(pass=="" || pass==" "){
+                document.getElementById("name3").innerHTML="Plz Enter Password, ";
+            }
+            else{
+                if(pass.length<9){
+                    document.getElementById("name3").innerHTML="Minimum 8 char, ";
+                }
+                if(pass.search(/[0-9]/)==-1){
+                    document.getElementById("name31").innerHTML="Atlist one digit, ";
+                }
+                if(pass.search(/[a-z]/)==-1){
+                    document.getElementById("name32").innerHTML="Atlist one lowercase, ";
+                }
+                if(pass.search(/[A-Z]/)==-1){
+                    document.getElementById("name33").innerHTML="Atlist one uppercase , ";
+                }
+                if(pass.search(/[!\@\#\$\%\^\&\*\(\)\<\>\?\,\.\{\}]/)==-1){
+                    document.getElementById("name34").innerHTML="Atlist one special characters, ";
+                }
+            }
+
+            //conpass
+
+            if(conpass!=pass){
+                document.getElementById("name4").innerHTML="Pass not match, "
+            }
+
+            //Email 1
+            if(email=="" || email==" "){
+            document.getElementById("name2").innerHTML="Plz Enter Email, ";
+                
+            }
+           
+            if(email.search(/["@"]/)==-1){
+            document.getElementById("name2").innerHTML="Plz Enter @, ";
+                    
+            }
+               
+
+           //email 2
+
+           for (let i of email){
+                if(i=="@"){
+                    if(email.indexOf("@")<=0){
+                    document.getElementById("name21").innerHTML="@ position wrong, ";
+                    }
+                }
+           }
+
+           //email 3
+           if(email.search(/["."]/)==-1){
+            document.getElementById("name22").innerHTML=". is missing, ";
+           }
+           for (let i of email){
+                if(i=="."){
+                    if(email.indexOf(".")<=0) {
+                    document.getElementById("name21").innerHTML=". position wrong, ";
+                    }
+                }
+           }
+           for(let i of email){
+            if(i=="."){
+                if(email.charAt(email.length-4)!='.' && email.charAt(email.length-3)!='.'){
+                document.getElementById("name21").innerHTML=". position wrong, ";
+           }
+        }
+        }
+
+            
+            
+        }
+    </script>
+
+</body>
+</html>
