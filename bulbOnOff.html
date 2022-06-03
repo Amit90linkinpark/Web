@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb</title>
+    <style>
+        body{
+            background-color:black;
+        }
+        .center {
+          margin-left: 200px;
+        }
+        .btn{
+            margin-left: 600px;
+            padding: 10px;
+            background:blue;
+            color:red;
+        }
+    </style>
+</head>
+<body><img src="bulb_off.jpg" alt="" class="center" id="ingId">
+<button class="btn" id="btnclck">Turn On</button>
+<script>
+    var btn=document.getElementById("btnclck");
+    btn.addEventListener("click",light);
+    function light(){
+        if(btn.textContent.includes('On')){
+        ingId.src="bulb_on.jpg";
+        btn.innerHTML="Turn Off"
+        }
+        else if(btn.textContent.includes('Off')){
+            ingId.src="bulb_off.jpg";
+            btn.innerHTML="Turn On";
+        }
+    }
+</script>
+</body>
+</html>
